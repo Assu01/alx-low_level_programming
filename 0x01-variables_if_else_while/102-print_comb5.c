@@ -1,36 +1,50 @@
 #include <stdio.h>
-
+/* more headers goes there */
+/* betty style doc for function main goes there */
 /**
- * main - This program prints all possible combinations of two two-digit numbers
+ * main - Entry point
+ *
  * Return: Always 0 (Success)
  */
 int main(void)
 {
-	int a, b, c, d;
-	int i, j; /* counters */
+	int p = 48, q = 48, y = 48, x = 49;
 
-	for (i = 0; i <= 99; i++)
+	while (p < 58)
 	{
-		for (j = i + 1; j <= 99; j++)
+		while (q < 58)
 		{
-			a = (i / 10) + '0';
-			b = (i % 10) + '0';
-			c = (j / 10) + '0';
-			d = (j % 10) + '0';
-			putchar(a);
-			putchar(b);
-			putchar(' ');
-			putchar(c);
-			putchar(d);
-
-			if (i != 98)
+			while (y < 58)
 			{
-				putchar(',');
-				putchar(' ');
+				while (x < 58)
+				{
+					putchar(p);
+					putchar(q);
+					putchar(' ');
+					putchar(y);
+					putchar(x);
+					if (!(p == 57 &&
+						q == 56 &&
+						y == 57 &&
+						x == 57))
+					{
+						putchar(',');
+						putchar(' ');
+					}
+					x++;
+				}
+				y++;
+				x = 48;
 			}
+			q++;
+			q = p;
+			x = q + 1;
 		}
+		p++;
+		q = 48;
+		y = p;
+		x = q+ 1;
 	}
-
 	putchar('\n');
 	return (0);
 }
