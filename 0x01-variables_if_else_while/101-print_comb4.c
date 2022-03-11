@@ -1,42 +1,39 @@
 #include <stdio.h>
-
 /**
- * main - possible combos of 3 digits
+ * main - Entry point
  *
- * Return (0)
+ * Return: Always 0 (Success)
  */
-
 int main(void)
 {
-	int i, j, k;
+int x, y, z;
 
-	for (i = 48; i < 58; i++)
-	{
-		for (j = 48; j < 58; j++)
-		{
-			for (k = 48; k < 58; k++)
-			{
-				if (i == j || j == k || i == k)
-				{
-					continue;
-				}
-				putchar(i);
-				putchar(j);
-				putchar(k);
-
-				if (i == 55 && j == 56 && k == 57)
-				{
-					break;
-
-				}
-				else
-				{
-					putchar(',');
-					putchar(' ');
-				}
-			}
-		}
-		putchar('\n');
-		return (0);
-	}
+for (x = 48; x <= 57; x++)
+{
+for (y = 48; y <= 57; y++)
+{
+for (z = 48; z <= 57; z++)
+{
+if (x == y || x == z || y == z || y <= x || z <= y)
+{
+}
+else
+{
+putchar(x);
+putchar(y);
+putchar(z);
+if (x == 55 && y == 56 && z == 57)
+{
+}
+else
+{
+putchar(44);
+putchar(' ');
+}
+}
+}
+}
+}
+putchar('\n');
+return (0);
 }
