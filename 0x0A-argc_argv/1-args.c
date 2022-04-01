@@ -27,4 +27,10 @@ int main(int argc, char *argv[] __attribute__((unused)))
  * Return: void
  */
 
+void print_number(int num)
+{
+	if (num / 10)
+		print_number(num / 10);
 
+	_putchar(num % 10 + '0');
+}
