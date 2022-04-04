@@ -1,47 +1,51 @@
-#include <stdio.h>
-#include "main.h"
+#include <stdlib.h>
 
 /**
- * argstostr - concat
- * @ac: count
- * @av: vector
- * Return: string
+ * argstostr - Concatenates all the arguments of the program
+ *
+ * @ac: Argument total count
+ *
+ * @av: Pointer to arguments
+ *
+ * Retunr: Pointer to concatenated string (SUCCESS) or
+ * NULL if @ac == 0 or @av == NULL (FAILURE) or
+ * NULL if if insufficient memory was available (FAILURE)
  */
 
 char *argstostr(int ac, char **av)
 {
-	int i, j, k;
-	int len, R = 0;
-	char *p;
+	int i, j;
+	int count = 0;
+	int t_count = 0;
+	char *result;
 
-	if (!ac || !av)
-	{
-		return (NULL);
-	}
-	R = 0;
+	if (ac == 0 || av == NULL)
+		return ('\0');
 
 	for (i = 0; i < ac; i++)
 	{
-		len = _strlen(av[i]) + 1;
-		R += len;
-	}
-	p = malloc(sizeof(char) * R + 1);
+		for (j = 0; av[i][j] != '\0'; j++)
+			t_count++;
 
-	if (!p)
+		t_count++;
+	}
+
+	result = malloc(sizeof(char) * t_count + 1);
+
+	if (result == NULL)
 	{
-		return (NULL);
+		return ('\0');
 	}
 
 	for (i = 0; i < ac; i++)
 	{
-		len = _strlen(av[i]);
-
-		for (j = 0; j < len; j++, k++)
+		for (j = 0; av[i][j] != '\0'; j++)
 		{
-			p[k] = av[i][j];
+			result[count++] = av[i][j];
 		}
-		p[k++] = '\n';
+		result[count++] = '\n';
 	}
-	p[k] = '\0';
-	return (p);
-} 
+
+	result[t_count] = '\0';
+	return (result);
+}
