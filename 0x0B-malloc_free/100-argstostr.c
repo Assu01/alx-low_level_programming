@@ -1,51 +1,43 @@
+#include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
+#include "main.h"
 
 /**
- * argstostr - Concatenates all the arguments of the program
+ * argstostr - function to convert arguments to strings
  *
- * @ac: Argument total count
+ * @ac: number of arguments
+ * @av: actual arguments
  *
- * @av: Pointer to arguments
- *
- * Retunr: Pointer to concatenated string (SUCCESS) or
- * NULL if @ac == 0 or @av == NULL (FAILURE) or
- * NULL if if insufficient memory was available (FAILURE)
+ * Return: always 0
  */
 
 char *argstostr(int ac, char **av)
 {
-	int i, j;
-	int count = 0;
-	int t_count = 0;
-	char *result;
-
-	if (ac == 0 || av == NULL)
-		return ('\0');
+	int i, a;
+	char *p;
+	int j;
 
 	for (i = 0; i < ac; i++)
 	{
-		for (j = 0; av[i][j] != '\0'; j++)
-			t_count++;
-
-		t_count++;
+		p = (char *)malloc(ac * sizeof(char) * strlen(av[i]));
 	}
-
-	result = malloc(sizeof(char) * t_count + 1);
-
-	if (result == NULL)
+	for (a = 0; a < ac; a++)
 	{
-		return ('\0');
-	}
-
-	for (i = 0; i < ac; i++)
-	{
-		for (j = 0; av[i][j] != '\0'; j++)
+		for (j = 0; j < strlen(av[j]); j++)
 		{
-			result[count++] = av[i][j];
+			*(p + a) = *(av[j]);
+			p++;
 		}
-		result[count++] = '\n';
 	}
-
-	result[t_count] = '\0';
-	return (result);
+	if (ac == 0 && av == NULL)
+	{
+		return (NULL);
+	}
+	else
+	{
+		return (p);
+	}
+	free(p);
+	return (0);
 }
