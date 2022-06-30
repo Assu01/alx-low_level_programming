@@ -3,13 +3,11 @@
  * Auth: Asrat Asmelash 
  * */
 
-#include "hash_tables.h"
-
 /**
- * hash_djb2 - Computes the hash of an array of bytes using the db2 algorithm.
- * @str: The byte array.
+ * hash_djb2 - implementation of the djb2 algorithm
+ * @str: string used to generate hash value
  *
- * Return: A fixed size unsigned integer digest.
+ * Return: hash value
  */
 unsigned long int hash_djb2(const unsigned char *str)
 {
